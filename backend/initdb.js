@@ -21,7 +21,7 @@ async function crearBBDD() {
         id INT AUTO_INCREMENT PRIMARY KEY,
         nombre VARCHAR(255) NOT NULL,
         descripcion TEXT,
-        precio DECIMAL(10,2),
+        precio_unidad DECIMAL(10,2),
         categoria VARCHAR(100),
         imagen_url VARCHAR(500),
         stock INT DEFAULT 0, 
@@ -35,11 +35,14 @@ async function crearBBDD() {
     await connection.query(`
       CREATE TABLE IF NOT EXISTS pedidos (
         id INT AUTO_INCREMENT PRIMARY KEY,
+        fecha DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
         nombre_cliente VARCHAR(255),
         email VARCHAR(255),
         telefono VARCHAR(50),
+        direccion_entrega TEXT,
         producto_id INT,
-        cantidad INT,
+        cantidad INT DEFAULT 1,
+        total DECIMAL(10,2) NOT NULL DEFAULT 0.00,
         comentarios TEXT,
         FOREIGN KEY(producto_id) REFERENCES productos(id)
       )
@@ -61,7 +64,7 @@ async function insertarDatosIniciales() {
 
     // productos
     await pool.query(`
-      INSERT INTO productos (nombre, descripcion, precio, categoria, imagen_url) VALUES
+      INSERT INTO productos (nombre, descripcion, precio_unidad, categoria, imagen_url) VALUES
       ('Reloj antiguo', 'Reloj de pared vintage de los años 60', 120.00, 'Relojes antiguos', 'https://via.placeholder'),
       ('Cámara clásica', 'Cámara analógica de colección', 95.50, 'Cámaras antiguas', 'https://via.placeholder'),
       ('Libro antiguo', 'Libro histórico del siglo XIX', 45.00, 'Libros antiguos', 'https://via.placeholder')
@@ -70,8 +73,8 @@ async function insertarDatosIniciales() {
 
     // pedidos
     await pool.query(`
-      INSERT INTO pedidos (nombre_cliente, email, telefono, producto_id, cantidad, comentarios)
-      VALUES ('Juan Pérez','juan@email.com','600123123',1,1,'Entrega lo antes posible') 
+      INSERT INTO pedidos (nombre_cliente, email, telefono, direccion_entrega, producto_id, cantidad, total, comentarios)
+      VALUES ('Juan Pérez','juan@email.com','600123123','Sevilla',1,1,120.00,'Entrega lo antes posible') 
     `);
     console.log('✅ pedidos insertados');
 

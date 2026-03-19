@@ -65,9 +65,9 @@ async function insertarDatosIniciales() {
     // productos
     await pool.query(`
       INSERT INTO productos (nombre, descripcion, precio_unidad, categoria, imagen_url) VALUES
-      ('Reloj antiguo', 'Reloj de pared vintage de los años 60', 120.00, 'Relojes antiguos', 'https://via.placeholder'),
-      ('Cámara clásica', 'Cámara analógica de colección', 95.50, 'Cámaras antiguas', 'https://via.placeholder'),
-      ('Libro antiguo', 'Libro histórico del siglo XIX', 45.00, 'Libros antiguos', 'https://via.placeholder')
+      ('Reloj antiguo', 'Reloj de pared vintage de los años 60', 120.00, 'Relojes', 'https://via.placeholder'),
+      ('Cámara clásica', 'Cámara analógica de colección', 95.50, 'Cámaras', 'https://via.placeholder'),
+      ('Libro antiguo', 'Libro histórico del siglo XIX', 45.00, 'Libros', 'https://via.placeholder')
     `);
     console.log('✅ Especialidades insertadas');
 

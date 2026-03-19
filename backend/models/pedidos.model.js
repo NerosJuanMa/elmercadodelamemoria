@@ -27,7 +27,7 @@ export async function crearPedido({ nombre_cliente, email, telefono, direccion_e
 // Obtener pedido por ID
 export async function obtenerPedidoPorId(id) {
   const [rows] = await pool.query(
-    'SELECT id, fecha, nombre_cliente, email, telefono, direccion_entrega, producto_id, cantidad, total,comentarios FROM pedidos WHERE id = ?',
+    'SELECT id, fecha, nombre_cliente, email, telefono, direccion_entrega, producto_id, cantidad, total, comentarios FROM pedidos WHERE id = ?',
     [id]
   );
   return rows[0];

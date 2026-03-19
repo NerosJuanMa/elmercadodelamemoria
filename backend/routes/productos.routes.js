@@ -2,6 +2,7 @@
 
 import { Router } from 'express';
 import * as productosController from '../controllers/productos.controller.js';
+import { verificarToken } from '../middlewares/auth.middleware.js';
 
 const productosRoutes = Router();
 
@@ -18,5 +19,10 @@ const productosRoutes = Router();
 productosRoutes.get('/', productosController.getProductos);
 
 productosRoutes.get('/:id', productosController.getProductoById);
+
+productosRoutes.get('/categoria/:categoria', productosController.getProductoByCategoria);
+
+productosRoutes.post('/', verificarToken, productosController.crearProducto);
+
 
 export default productosRoutes;

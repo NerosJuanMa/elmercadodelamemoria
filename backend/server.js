@@ -35,8 +35,9 @@ app.get('/api/probar-bbdd', async (req, res) => {
   }
 });
 
-// Rutas de productos (todavia no esta creada)
+// Rutas de productos
 app.use('/api/productos', productosRoutes);
+app.use('/api/productos/categoria', productosRoutes);
 
 // Arrancar el servidor
 const PORT = process.env.PORT || 3000;

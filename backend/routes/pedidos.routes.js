@@ -1,53 +1,39 @@
-// routes/pedidos.routes.js
-// import { Router } from 'express';
-// import * as pedidosController from '../controllers/pedidos.controller.js';
-
-// const pedidosrouter = Router();
-
-// /**
-//  * ==========================================
-//  * 🛒 RUTAS DE PEDIDOS
-//  * ==========================================
-//  */
-
-// // Crear pedido 
-// pedidosrouter.post('/',pedidosController.crearPedido);
-
-// // Obtener mis pedidos
-// pedidosrouter.get('/pedidos', pedidosController.getMisPedidos);
-
-// export default pedidosrouter;
-
+// routes/pedidos.routes.js 
 import { Router } from 'express';
 import * as pedidosController from '../controllers/pedidos.controller.js';
 import { verifyToken } from '../middlewares/auth.middleware.js';
 
-const pedidosrouter = Router();
+const router = Router();
 
 /**
  * -----------------------------------------------------------
  * 🌍 RUTAS PÚBLICAS (Para los Clientes)
  * -----------------------------------------------------------
+ * Estas rutas no requieren autenticación para permitir la compra.
  */
 
-// Crear un nuevo pedido (con uno o varios productos)
-pedidosrouter.post('/', pedidosController.postPedidoMultiple);
+// Crear un nuevo pedido con múltiples productos (Carrito)
+// Endpoint: POST /api/pedidos
+router.post('/', pedidosController.postPedidoMultiple);
 
 
 /**
  * -----------------------------------------------------------
  * 🔐 RUTAS PROTEGIDAS (Solo para el Administrador)
  * -----------------------------------------------------------
+ * Requieren el Bearer Token enviado en las cabeceras (Headers).
  */
 
-// Obtener todos los pedidos realizados en el bazar
-pedidosrouter.get('/admin/todos', verifyToken, pedidosController.getTodosLosPedidos);
+// Obtener la lista general de todos los pedidos realizados
+// Endpoint: GET /api/pedidos/admin/todos
+router.get('/admin/todos', verifyToken, pedidosController.getTodosLosPedidos);
 
-// Obtener el detalle de un pedido específico (incluyendo sus productos)
-pedidosrouter.get('/admin/:id', verifyToken, pedidosController.getDetallePedido);
+// Obtener el detalle de un pedido (productos, cantidades y precios)
+// Endpoint: GET /api/pedidos/admin/:id
+router.get('/admin/:id', verifyToken, pedidosController.getDetallePedido);
 
-// Actualizar el estado de un pedido (ej: de 'pendiente' a 'enviado')
-pedidosrouter.put('/admin/:id/estado', verifyToken, pedidosController.updateEstadoPedido);
+// Actualizar el estado del pedido (ej: 'pendiente' -> 'enviado' -> 'completado')
+// Endpoint: PUT /api/pedidos/admin/:id/estado
+router.put('/admin/:id/estado', verifyToken, pedidosController.updateEstadoPedido);
 
-
-export default pedidosrouter;
+export default router;

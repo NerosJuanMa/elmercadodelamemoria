@@ -5,6 +5,8 @@ import cors from 'cors';
 
 import pool from './config/db.js';
 import productosRoutes from './routes/productos.routes.js';
+import pedidosRoutes from './routes/pedidos.routes.js';
+import authRoutes from './routes/auth.routes.js';
 
 const app = express();
 
@@ -35,10 +37,18 @@ app.get('/api/probar-bbdd', async (req, res) => {
   }
 });
 
+app.use('/api/login', authRoutes)
+
 // Rutas de productos
 app.use('/api/productos', productosRoutes);
 app.use('/api/productos/categoria', productosRoutes);
+// app.use('/api/productos/login', productosRoutes);
+app.use('/api/productos/admin', productosRoutes);
 
+// Rutas de pedidos
+app.use('/api/pedidos', pedidosRoutes);
+// app.use('/api/pedidos/login', productosRoutes);
+app.use('/api/pedidos/admin', productosRoutes);
 // Arrancar el servidor
 const PORT = process.env.PORT || 3000;
 

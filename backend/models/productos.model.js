@@ -46,22 +46,75 @@ export async function obtenerPorCategoria(categoria) {
 }
 
 // Crear producto
-export async function crearproducto({ id, nombre, descripcion, precio_unidad, categoria, imagen_url, stock, activo, creado_en }) {
+export async function crearproducto({ nombre, descripcion, precio_unidad, categoria, imagen_url, stock, activo }) {
+  // Nota: El ID no se envía porque es AUTO_INCREMENT
   const [result] = await pool.query(
-    "INSERT INTO productos (nombre_cliente, email, telefono, direccion_entrega, producto_id, cantidad, total,comentarios) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)",
-    [id, nombre, descripcion, precio_unidad, categoria, imagen_url, stock, activo, creado_en]
+    `INSERT INTO productos (nombre, descripcion, precio_unidad, categoria, imagen_url, stock,activo) 
+     VALUES (?, ?, ?, ?, ?, ?, ?)`,
+    [nombre, descripcion, precio_unidad, categoria, imagen_url, stock, activo]
   );
 
   return {
     id: result.insertId,
-    nombre: nombre,
-    descripcion: descripcion,
-    precio_unidad: precio_unidad,
-    categoria: categoria,
-    imagen_url: imagen_url,
-    stock: stock,
-    activo: activo,
-    creado_en: CURRENT_TIMESTAMP,
-    
+    nombre,
+    descripcion,
+    precio_unidad,
+    categoria,
+    imagen_url,
+    stock,
+    activo
+    // El campo 'creado_en' lo genera automáticamente la base de datos
   };
+}
+
+// Actualizar producto existente
+export async function actualizarProducto(id, { nombre, descripcion, precio_unidad, categoria, imagen_url, stock, activo }) {
+  const [result] = await pool.query(
+    `UPDATE productos 
+     SET nombre = ?, descripcion = ?, precio_unidad = ?, categoria = ?, imagen_url = ?, stock = ?, activo = ?
+     WHERE id = ?`,
+    [nombre, descripcion, precio_unidad, categoria, imagen_url, stock, activo, id]
+  );
+
+  // Si affectedRows es 0, significa que el ID no existía
+  if (result.affectedRows === 0) return null;
+
+  return { id, nombre, descripcion, precio_unidad, categoria, imagen_url, stock, activo };
+}
+
+// Eliminar producto por ID
+// export async function eliminarProducto(id) {
+//   const [result] = await pool.query(
+//     "DELETE FROM productos WHERE id = ?",
+//     [id]
+//   );
+
+//   // Si affectedRows es 0, significa que no existía el producto con ese ID
+//   return result.affectedRows > 0;
+// }
+
+// Borrado lógico: Cambiar estado a inactivo
+export async function borrarLogicoProducto(id) {
+  const [result] = await pool.query(
+    "UPDATE productos SET activo = 0 WHERE id = ?",
+    [id]
+  );
+
+  // Retorna true si encontró el producto y lo actualizó
+  return result.affectedRows > 0;
+}
+
+// Ver ABSOLUTAMENTE TODO (incluyendo borrados lógicos)
+export async function obtenerTodosAdmin() {
+  const [rows] = await pool.query("SELECT * FROM productos ORDER BY id DESC");
+  return rows;
+}
+
+// Reactivar un producto (opuesto al borrado lógico)
+export async function reactivarProducto(id) {
+  const [result] = await pool.query(
+    "UPDATE productos SET activo = 1 WHERE id = ?",
+    [id]
+  );
+  return result.affectedRows > 0;
 }

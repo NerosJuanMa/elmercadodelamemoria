@@ -24,7 +24,7 @@ async function crearBBDD() {
         precio_unidad DECIMAL(10,2),
         categoria VARCHAR(100),
         imagen_url VARCHAR(500),
-        stock INT DEFAULT 1, 
+        stock INT DEFAULT 0, 
         activo BOOL DEFAULT 1, 
         creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
@@ -34,34 +34,21 @@ async function crearBBDD() {
     // TABLA pedidos
     await connection.query(`
       CREATE TABLE IF NOT EXISTS pedidos (
-          id INT AUTO_INCREMENT PRIMARY KEY,
-          nombre_cliente VARCHAR(255) NOT NULL,
-          email VARCHAR(255) NOT NULL,
-          telefono VARCHAR(20),
-          direccion_entrega TEXT NOT NULL,
-          total DECIMAL(10,2) NOT NULL,
-          comentarios TEXT,
-          estado ENUM('Pendiente', 'Pagado', 'Enviado', 'Entregado') DEFAULT 'Pendiente',
-          creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        fecha DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        nombre_cliente VARCHAR(255),
+        email VARCHAR(255),
+        telefono VARCHAR(50),
+        direccion_entrega TEXT,
+        producto_id INT,
+        cantidad INT DEFAULT 1,
+        total DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+        comentarios TEXT,
+        FOREIGN KEY(producto_id) REFERENCES productos(id)
       )
     `);
     console.log('✅ Tabla pedidos creada');
     
-    // TABLA pedido_items
-    await connection.query(`
-      CREATE TABLE IF NOT EXISTS pedido_items (
-          id INT AUTO_INCREMENT PRIMARY KEY,
-          pedido_id INT,
-          producto_id INT,
-          cantidad INT NOT NULL,
-          precio_unitario DECIMAL(10,2) NOT NULL,
-          FOREIGN KEY (pedido_id) REFERENCES pedidos(id) ON DELETE CASCADE,
-          FOREIGN KEY (producto_id) REFERENCES productos(id)
-      )
-    `);
-    console.log('✅ Tabla pedido_items creada');
-    
-
 
   } catch (error) {
     console.error('❌ Error creando la base de datos:', error.message);
@@ -86,16 +73,10 @@ async function insertarDatosIniciales() {
 
     // pedidos
     await pool.query(`
-      INSERT INTO pedidos (nombre_cliente, email, telefono, direccion_entrega, total, comentarios, estado)
-      VALUES ('Juan Pérez','juan@email.com','600123123','Sevilla', 120.00,'Entrega lo antes posible', 'Pendiente') 
+      INSERT INTO pedidos (nombre_cliente, email, telefono, direccion_entrega, producto_id, cantidad, total, comentarios)
+      VALUES ('Juan Pérez','juan@email.com','600123123','Sevilla',1,1,120.00,'Entrega lo antes posible') 
     `);
     console.log('✅ pedidos insertados');
-    // pedidos_items
-    await pool.query(`
-      INSERT INTO pedido_items ( pedido_id, producto_id, cantidad, precio_unitario)
-      VALUES (1,2,5, 120.00) 
-    `);
-    console.log('✅ pedidos_items insertados');
 
 
     console.log('\n🎉 ¡Base de datos inicializada correctamente!');

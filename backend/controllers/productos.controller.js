@@ -95,33 +95,147 @@ export async function getProductoByCategoria(req, res) {
   }
 }
 
-
-export async function crearProducto(req, res) {
+export async function createProducto(req, res) {
   try {
-    const { productos } = req.body;
-    const cliente_id = req.user.cliente_id; // Obtener del middleware de autenticación
-    
-    console.log('🛒 Creando Producto para cliente:', cliente_id);
-    console.log('📦 Productos del Producto:', productos);
-    
-    // Crear Producto
-    const nuevoProducto = await ProductosModel.crear({
-      cliente_id,
-      productos
+    // Extraemos los datos que vienen en el cuerpo del JSON (body)
+    const { nombre, descripcion, precio_unidad, categoria, imagen_url, stock, activo } = req.body;
+
+    // Validación básica: el nombre y el precio son obligatorios
+    if (!nombre || !precio_unidad || !categoria) {
+      return res.status(400).json({
+        success: false,
+        message: 'El nombre, el precio y la categoria son obligatorios.'
+      });
+    }
+
+    // Llamamos a la función del modelo enviando los datos
+    const nuevoProducto = await productosModel.crearproducto({
+      nombre,
+      descripcion,
+      precio_unidad,
+      categoria,
+      imagen_url,
+      stock,
+      activo
     });
-    
+
+    // Respuesta de éxito
     res.status(201).json({
       success: true,
-      message: 'Producto creado exitosamente',
+      message: 'Producto creado correctamente',
       data: nuevoProducto
     });
-    
+
   } catch (error) {
-    console.error('❌ Error al crear Producto:', error);
+    console.error('❌ Error en el controlador al crear producto:', error);
     res.status(500).json({
       success: false,
       message: 'Error interno del servidor',
       error: error.message
     });
+  }
+}
+
+export async function updateProducto(req, res) {
+  try {
+    const { id } = req.params; // El ID viene de la URL: /api/productos/4
+    const datosNuevos = req.body;
+
+    const productoActualizado = await productosModel.actualizarProducto(id, datosNuevos);
+
+    if (!productoActualizado) {
+      return res.status(404).json({
+        success: false,
+        message: 'Producto no encontrado'
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: 'Producto actualizado con éxito',
+      data: productoActualizado
+    });
+
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+}
+
+// export async function deleteProducto(req, res) {
+//   try {
+//     const { id } = req.params;
+//     const eliminado = await productosModel.eliminarProducto(id);
+
+//     if (!eliminado) {
+//       return res.status(404).json({
+//         success: false,
+//         message: 'No se pudo eliminar: Producto no encontrado'
+//       });
+//     }
+
+//     res.status(200).json({
+//       success: true,
+//       message: `Producto con ID ${id} eliminado correctamente`
+//     });
+
+//   } catch (error) {
+//     console.error('❌ Error al eliminar producto:', error);
+//     res.status(500).json({
+//       success: false,
+//       message: 'Error interno del servidor',
+//       error: error.message
+//     });
+//   }
+// }
+
+export async function softDeleteProducto(req, res) {
+  try {
+    const { id } = req.params;
+    const desactivado = await productosModel.borrarLogicoProducto(id);
+
+    if (!desactivado) {
+      return res.status(404).json({
+        success: false,
+        message: 'Producto no encontrado'
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: `Producto con ID ${id} ha sido marcado como inactivo (borrado lógico)`
+    });
+
+  } catch (error) {
+    console.error('❌ Error en borrado lógico:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Error interno del servidor'
+    });
+  }
+}
+
+// Obtener todos para el panel de admin
+export async function getProductosAdmin(req, res) {
+  try {
+    const productos = await productosModel.obtenerTodosAdmin();
+    res.status(200).json({ success: true, data: productos });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+}
+
+// Restaurar un producto borrado
+export async function restoreProducto(req, res) {
+  try {
+    const { id } = req.params;
+    const reactivado = await productosModel.reactivarProducto(id);
+
+    if (!reactivado) {
+      return res.status(404).json({ success: false, message: 'Producto no encontrado' });
+    }
+
+    res.status(200).json({ success: true, message: 'Producto reactivado correctamente' });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
   }
 }

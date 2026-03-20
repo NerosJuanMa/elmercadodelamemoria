@@ -9,7 +9,7 @@ import * as pedidosModel from '../models/pedidos.model.js';
  * Funciones para gestión de pedidos del bazar
  * - Crear pedidos
  * - Obtener mis pedidos
- */
+
 
 export async function crearPedido(req, res) {
   try {
@@ -43,7 +43,7 @@ export async function crearPedido(req, res) {
 
 /**
  * Obtener mis pedidos
- */
+
 export async function getMisPedidos(req, res) {
   try {
     const cliente_id = req.user.cliente_id;
@@ -84,5 +84,75 @@ export async function getMisPedidos(req, res) {
       success: false,
       message: 'Error interno del servidor'
     });
+  }
+}
+ */
+
+export async function postPedidoMultiple(req, res) {
+  try {
+    const { productos, ...datosCliente } = req.body;
+
+    if (!productos || productos.length === 0) {
+      return res.status(400).json({ success: false, message: "El carrito está vacío" });
+    }
+
+    const nuevoPedido = await pedidosModel.crearPedidoMultiple(req.body);
+
+    res.status(201).json({
+      success: true,
+      message: '¡Pedido multivariable recibido!',
+      data: nuevoPedido
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+}
+
+
+// Obtener todos los pedidos (Vista general del admin)
+export async function getTodosLosPedidos(req, res) {
+  try {
+    const pedidos = await pedidosModel.obtenerTodos();
+    res.status(200).json({ success: true, data: pedidos });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+}
+
+// Obtener el "corazón" de un pedido (Cabecera + Productos)
+export async function getDetallePedido(req, res) {
+  try {
+    const { id } = req.params;
+    const detalle = await pedidosModel.obtenerDetalleCompleto(id);
+
+    if (!detalle) {
+      return res.status(404).json({ success: false, message: 'Pedido no encontrado' });
+    }
+
+    res.status(200).json({ success: true, data: detalle });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+}
+
+// Cambiar el estado del pedido
+export async function updateEstadoPedido(req, res) {
+  try {
+    const { id } = req.params;
+    const { estado } = req.body; // Ejemplo: { "estado": "enviado" }
+
+    if (!estado) {
+      return res.status(400).json({ success: false, message: 'El estado es obligatorio' });
+    }
+
+    const actualizado = await pedidosModel.actualizarEstado(id, estado);
+
+    if (!actualizado) {
+      return res.status(404).json({ success: false, message: 'No se encontró el pedido' });
+    }
+
+    res.status(200).json({ success: true, message: `Pedido ${id} actualizado a: ${estado}` });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
   }
 }

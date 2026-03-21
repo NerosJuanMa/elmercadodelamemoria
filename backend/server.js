@@ -29,7 +29,7 @@ app.use('/api/pedidos', pedidosRoutes);
 
 // --- Rutas de utilidad/prueba ---
 app.get('/', (req, res) => {
-  res.send('API Bazar - Funcionando Correctamente');
+  res.send('API El Mercado de la Memoria - Funcionando Correctamente');
 });
 
 

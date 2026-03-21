@@ -7,8 +7,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "initdb": "node initdb.js",
-    "seeds": "node seeds.js"
+    "initdb": "node initdb.js"
   },
   "keywords": [],
   "author": "Juan Manuel Mudarra Pozo",

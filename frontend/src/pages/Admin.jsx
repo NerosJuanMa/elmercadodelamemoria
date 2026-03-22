@@ -1,5 +1,6 @@
-// pages/About.jsx
-export default function About() {
+// pages/Admin.jsx
+
+export default function Admin() {
   return (
     <section className="card">
       <h2>👤 Sobre mí el mas bello </h2>

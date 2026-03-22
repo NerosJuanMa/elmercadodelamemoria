@@ -3,10 +3,8 @@
     flex-flow: column;
     justify-self: center;
     align-items: center; 
-    gap: 1px;
-    /* background-color: #F5F0E6; */
-    color: #4B3621;
-    
+    gap: 1px; 
+    color: #4B3621; 
     border: 1px solid #C8A96A;
     border-radius: 10px;
     position: fixed;
@@ -20,19 +18,17 @@
     flex-flow: column;
     justify-self: center;
     align-items: center; 
-    gap: 5px;
+    gap: 1px;
     padding: 5px;
-    background-color: #C8A96A;
-    /* background-color: #F5F0E6; */
+    background-color: #fad790;
     filter: brightness(1) 
         saturate(0%) 
         invert(0%) 
-        sepia(15%) 
+        sepia(10%) 
         saturate(1000%) 
         hue-rotate(0deg) 
         brightness(100%) 
-        contrast(100%);
-    /* backdrop-filter: blur(8px); */
+        contrast(100%); 
     color: #4B3621;
     font-weight: 900;
     width: 75%;
@@ -41,4 +37,13 @@
     top: 50%;
     border: 2px solid #4B3621;
     border-radius: 50px;
+}
+
+.button{
+    display: flex;
+    flex-flow: column;
+    justify-self: center;
+    align-items: center; 
+    position: relative;
+    top: 25px;
 }

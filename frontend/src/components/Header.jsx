@@ -4,14 +4,16 @@ import './Header.css';
 function Header() {
   return (
     <header className="header">
-      <h1 className="title">El Mercado de la Memoria</h1>
-      
+           
       <nav className="nav">
-        <Link to="/" className="navLink">Inicio</Link>
-        <Link to="/productos" className="navLink">Productos</Link>
-        <Link to="/pedidos" className="navLink">Pedidos</Link>
+        <Link to="/Admin" className="navLink" title='Zona Admin'>👤</Link>
+        
+        <Link to="/" className="navLink" title='Inicio'> 🏠</Link>
+        <Link to="/Items" className="navLink" title='Items'>🎁</Link>
+        <Link to="/Pedido" className="navLink" title='Pedido'>🛒</Link>
+       
         {/* <button className="button">Iniciar sesión</button> */}
- 
+      
       </nav>
       
     </header>

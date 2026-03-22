@@ -8,7 +8,7 @@ export default function Nav() {
     <nav className="main-nav" aria-label="Navegación principal">
       
       <NavLink to="/" end className={linkClass}>
-        👤 <br />Admin
+        👤 <br />Zona Admin
       </NavLink>
       <NavLink to="/about" className={linkClass}>
         🏠 <br />Inicio

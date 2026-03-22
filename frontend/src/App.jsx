@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
+import Pedido from "./pages/Pedido";
+import Items from "./pages/Items";
 
 
 export default function App() {
@@ -10,8 +10,8 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="contact" element={<Contact />} />
+        <Route path="Pedido" element={<Pedido />} />
+        <Route path="items" element={<Items />} />
       </Route>
     </Routes>
   );

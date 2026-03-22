@@ -1,6 +1,6 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
+  --text: #4B3621;
+  --text-h: #4B3621;
   --bg: #fff;
   --border: #e5e4e7;
   --code-bg: #f4f3ec;
@@ -11,8 +11,8 @@
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --sans: Roboto;
+  --heading: Playfair Display;
   --mono: ui-monospace, Consolas, monospace;
 
   font: 18px/145% var(--sans);
@@ -69,8 +69,9 @@ body {
 h1,
 h2 {
   font-family: var(--heading);
-  /* font-weight: 500;
-  color: var(--text-h); */
+
+  font-weight: 900;
+  /* color: var(--text-h); */
 } 
 
 /* h1 {
@@ -84,9 +85,8 @@ h2 {
 } */
 h2 {
   font-size: 24px;
-  line-height: 1000%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
+  letter-spacing: 0.5px;
+  margin: 1px;
   @media (max-width: 1024px) {
     font-size: 20px;
   }

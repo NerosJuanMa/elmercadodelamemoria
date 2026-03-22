@@ -1,8 +1,12 @@
-.linkClass .main-nav{
-    text-align: right;
-    justify-content: right; 
-    align-items: right;
+.linkClass{
+    display:flex;
+    text-align: center;
+    justify-content: center; 
+    align-items: center;
     z-index: 1010;
 
 }
+ .main-nav{
+    text-align: center;
+ }
 

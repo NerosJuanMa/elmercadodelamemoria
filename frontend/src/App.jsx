@@ -11,7 +11,7 @@ export default function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="Pedido" element={<Pedido />} />
-        <Route path="items" element={<Items />} />
+        <Route path="Items" element={<Items />} />
       </Route>
     </Routes>
   );

@@ -8,10 +8,7 @@ import mercado from '../assets/Mercado.png'
 export default function Layout() {
   return (
     <div className="layout">
-  <picture>
-    <source media="(min-width: )" srcset="" />
-    <img src="" alt="" />
-  </picture>>
+
       {/* <Nav /> */}
       <Header />
       <main className="layout-main" id="contenido">

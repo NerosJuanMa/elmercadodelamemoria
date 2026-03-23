@@ -1,0 +1,43 @@
+/* 1. EL CONTENEDOR FIJO (donde ocurre el scroll) */
+.contenedor-productos-fijo {
+  /* Posicionamiento: Ajusta esto según dónde quieras el bloque en tu web */
+  position: relative; /* O 'absolute'/'fixed' si quieres que flote sobre otros elementos */
+  top: 0; 
+  left: 0;
+  
+  /* TAMAÑO DEL BLOQUE VISIBLE (importante) */
+  width: 100%; /* O el ancho que desees, ej: 80% */
+  height: 80vh; /* El bloque medirá el 80% del alto de la pantalla */
+  
+  /* COMPORTAMIENTO DEL SCROLL (La magia) */
+  overflow-y: auto; /* Muestra barra de scroll vertical solo si es necesario */
+  overflow-x: hidden; /* Evita scroll horizontal */
+  
+  /* Estilos visuales opcionales */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.5); /* Un fondo sutil */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box; /* Asegura que el padding no sume al tamaño */
+}
+
+/* Opcional: Estilizar la barra de scroll para que sea más discreta */
+.contenedor-productos-fijo::-webkit-scrollbar {
+  width: 8px;
+}
+.contenedor-productos-fijo::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+/* 2. EL GRID DE PRODUCTOS (dentro del contenedor) */
+.grid-productos {
+  display: grid;
+  /* Define cuántas columnas quieres y su comportamiento */
+  /* 'repeat(auto-fill, minmax(280px, 1fr))' hace que sea responsivo automáticamente */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px; /* Espacio entre tarjetas */
+  
+  /* Asegura que el grid ocupe todo el ancho disponible internamente */
+  width: 100%;
+}

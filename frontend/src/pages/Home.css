@@ -3,6 +3,7 @@
     flex-flow: column;
     justify-self: center;
     align-items: center; 
+    text-align: center;
     gap: 1px; 
     color: #4B3621; 
     filter: brightness(1) 
@@ -19,6 +20,7 @@
     top: 1.5%;
     width: 35%;
     backdrop-filter: blur(10px);
+    z-index: 9999;
 }
 
 .card{

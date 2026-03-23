@@ -1,12 +1,17 @@
 // pages/Pedido.jsx
+import './Pedido.css';
 export default function Pedido() {
   return (
     <>
       <section className="title"><h2>🛒 Pedido</h2></section>
     
-      <section className="card">      
+    <section className="contenedor-pedido-fijo">
       <p>Otra página distinta, dentro del mismo Layout..</p>
-      </section>
+       <form action="" method="post">
+        </form>     
+    </section>
+            
+      
     </>
   );
 }

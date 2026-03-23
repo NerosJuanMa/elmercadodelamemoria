@@ -5,11 +5,19 @@
     align-items: center; 
     gap: 1px; 
     color: #4B3621; 
+    filter: brightness(1) 
+        saturate(0%) 
+        invert(0%) 
+        sepia(10%) 
+        saturate(1000%) 
+        hue-rotate(0deg) 
+        brightness(100%) 
+        contrast(150%); 
     border: 1px solid #C8A96A;
     border-radius: 10px;
     position: fixed;
     top: 1.5%;
-    width: 15%;
+    width: 35%;
     backdrop-filter: blur(10px);
 }
 

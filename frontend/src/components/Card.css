@@ -1,0 +1,56 @@
+/* Contenedor principal de la tarjeta */
+.card_item {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center; 
+    gap: 5px;
+    padding: 15px; /* Un poco más de aire */
+    color: #4B3621;
+    font-weight: 900;
+    width: 300px; /* Ancho fijo para que parezca tarjeta */
+    height: auto; 
+    text-align: center;
+    border: 2px solid #4B3621;
+    border-radius: 50px;
+    backdrop-filter: blur(8px);
+    margin: 20px; /* Espacio entre tarjetas */
+}
+
+/* El fondo beige/dorado y los filtros que definiste */
+.card_producto {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%; 
+    gap: 15px;
+    padding: 20px;
+    background-color: #fad790;
+    border: 2px solid #4B3621;
+    border-radius: 40px;
+    /* Aplicando tus filtros de estilo antiguo */
+    filter: sepia(10%) saturate(1000%) contrast(100%);
+}
+
+.product_img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 1px solid #4B3621;
+}
+
+.card_title_inner {
+    font-size: 1.2rem;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.precio {
+    display: block;
+    margin-top: 10px;
+    font-size: 1.4rem;
+    color: #4B3621;
+}

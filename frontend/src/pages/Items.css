@@ -52,3 +52,18 @@
     border: 2px solid #4B3621;
     border-radius: 50px;
 }
+.filtro_categoria{
+    display: flex;
+    flex-flow: column;
+    justify-self: center;
+    align-items: center; 
+    gap: 1px; 
+    color: #4B3621; 
+    border: 1px solid #C8A96A;
+    border-radius: 10px;
+    position: fixed;
+    top: 2%;
+    width: 15%;
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+}

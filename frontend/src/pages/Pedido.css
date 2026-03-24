@@ -38,10 +38,84 @@
   overflow-x: hidden; /* Evita scroll horizontal */
   
   /* Estilos visuales opcionales */
-  padding: 20px;
+  padding: 15px;
   backdrop-filter: blur(10px);
   /* background-color:rgba(255, 255, 255, 0.5);  */
   border: 1px solid #C8A96A;;
   border-radius: 10px;
   box-sizing: border-box; /* Asegura que el padding no sume al tamaño */
+}
+/* Opcional: Estilizar la barra de scroll para que sea más discreta */
+.contenedor-pedido-fijo::-webkit-scrollbar {
+  width: 8px;
+}
+.contenedor-pedido-fijo::-webkit-scrollbar-thumb {
+  background-color: #C8A96A;
+  border-radius: 4px;
+}
+
+.form-vintage {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.campo-grupo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;    
+}
+
+.campo-grupo label, .seccion-productos label {
+    font-weight: bold;
+    color: #4B3621;
+    margin-bottom: 1px;
+    padding: 2px;
+    width: 100px;
+    background-color: #C8A96A;
+    border: 1px solid #4B3621;
+    border-radius: 10px;
+}
+
+.campo-grupo input, .campo-grupo textarea {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #a89a85;
+    border-radius: 10px;
+    background-color: rgba(250, 215, 144, 0.8);
+    font-family: inherit;
+    color: #4B3621;
+}
+
+/* Estilo para los productos (bloques grises/crema en tu imagen) */
+.item-resumen {
+    background-color: #e6dcc5;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    color: #5d4a36;
+    text-align: left;
+}
+
+.btn-enviar {
+    background-color: #8b5e34;
+    color:  #e6dcc5;
+    padding: 12px;
+    border-radius: 50px;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.btn-enviar:hover {
+    background-color: #634226;
+}
+
+.nota-pie {
+    font-size: 0.75rem;
+    color: #8b7d6b;
+    text-align: center;
+    margin-top: 10px;
 }

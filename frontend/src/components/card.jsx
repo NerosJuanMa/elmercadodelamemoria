@@ -1,25 +1,63 @@
-import React from 'react';
+import React, { useState } from 'react'; 
 import './Card.css';
 
-const Card = ({ nombre, descripcion, precio, imagen }) => {
-  return (
-    <article className="card_item">
-      <div className="card_producto">
-        {/* Título interno o categoría si lo necesitas */}
-        <h3 className="card_title_inner">{nombre}</h3>
-        
-        {/* Imagen con el contenedor que aplica los filtros */}
-        <div className="image_container">
-          <img src={imagen} alt={nombre} className="product_img" />
-        </div>
+const Card = ({ nombre, descripcion, precio, imagen, stock }) => {
+    const [cantidad, setCantidad] = useState(1);
+    console.log(`Producto: ${nombre} | Stock recibido: ${stock}`);
+    const handleAgregar = () => {
+        alert(`Añadido al carrito: ${cantidad} unidad(es) de ${nombre}`);
+    };
 
-        <div className="info_container">
-          <p className="descripcion">{descripcion}</p>
-          <span className="precio">{precio} €</span>
-        </div>
-      </div>
-    </article>
-  );
+    // Función para manejar el cambio de cantidad manualmente (validación extra)
+    const handleChange = (e) => {
+        const valor = Number(e.target.value);
+        if (valor <= stock && valor >= 1) {
+            setCantidad(valor);
+        } else if (valor < 1) {
+            setCantidad(1); // Evita números negativos o cero
+        } else {
+            setCantidad(stock); // Evita superar el stock
+        }
+    };
+
+    return (
+        <article className="card_item">
+            <div className="card_producto">
+                <h3 className="card_title_inner">{nombre}</h3>
+                
+                <div className="image_container">
+                    <img src={imagen} alt={nombre} className="product_img" />
+                </div>
+
+                <div className="info_container">
+                    <p className="descripcion">{descripcion}</p>
+                    {/* CORREGIDO: He eliminado la duplicación del texto de stock */}
+                    <div className="stock_info">
+                        Stock disponible: <strong>{stock}</strong>
+                    </div>
+                    <span className="precio">{precio} €</span>
+                </div>
+
+                <div className="compra_container">
+                    <input 
+                        type="number" 
+                        min="1" 
+                        max={stock} 
+                        value={cantidad}
+                        onChange={handleChange} // USAMOS la función de validación
+                        className="input_cantidad"
+                    />
+                    <button 
+                        onClick={handleAgregar}
+                        className="btn_agregar"
+                        disabled={stock <= 0}
+                    >
+                        {stock > 0 ? 'Añadir' : 'Sin Stock'}
+                    </button>
+                </div>
+            </div>
+        </article>
+    );
 };
 
 export default Card;

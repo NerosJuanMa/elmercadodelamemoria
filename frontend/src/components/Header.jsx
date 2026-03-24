@@ -11,10 +11,7 @@ function Header() {
         <Link to="/" className="navLink" title='Inicio'> 🏠</Link>
         <Link to="/Items" className="navLink" title='Items'>🎁</Link>
         {/* <Link to="/PaginaProductos" className="navLink" title='PaginaProductos'>🎁</Link> */}
-        <Link to="/Pedido" className="navLink" title='Pedido'>🛒</Link>
-       
-        {/* <button className="button">Iniciar sesión</button> */}
-      
+        <Link to="/Pedido" className="navLink" title='Pedido'>🛒</Link>    
       </nav>
       
     </header>

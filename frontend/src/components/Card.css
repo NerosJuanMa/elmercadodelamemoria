@@ -60,3 +60,50 @@
     font-size: 1.4rem;
     color: #4B3621;
 }
+
+/* Contenedor de cantidad y botón */
+.compra_container {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%;
+    justify-content: center;
+}
+
+.input_cantidad {
+    width: 50px;
+    padding: 5px;
+    border: 1px solid #4B3621;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #4B3621;
+    text-align: center;
+}
+
+.btn_agregar {
+    background-color: #4B3621;
+    color: #fad790;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.btn_agregar:hover:not(:disabled) {
+    background-color: #63472d;
+    transform: scale(1.05);
+}
+
+.btn_agregar:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
+.stock_info {
+    font-size: 0.85rem;
+    color: #4B3621;
+    margin-bottom: 5px;
+}

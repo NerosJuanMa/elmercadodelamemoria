@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import './Items.css';
 
-import Card from '../components/Card';
+// import Card from '../components/Card';
 // 2. Definir la lista fuera para mejor rendimiento
 const listaDeProductos = [
   { id: 1, nombre: "Reloj de Bolsillo Antiguo", categoria: "Relojes", descripcion: "Plata s.XIX.", precio: "120.50", imagen: "https://via.placeholder.com/150?text=Reloj+1" },

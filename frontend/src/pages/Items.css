@@ -38,7 +38,20 @@
     /* backdrop-filter: blur(10px); */
     z-index: 10000;
 }
-
+h3{
+  color: #F5F0E6; 
+  background-color: #C8A96A;
+  transition: color 0.3s ease;
+  background: transparent;
+  filter: brightness(1) 
+        saturate(100%) 
+        invert(100%) 
+        sepia(90%) 
+        saturate(1000%) 
+        hue-rotate(0deg) 
+        brightness(90%) 
+        contrast(50%);
+}
 .buscar{
     display: flex;
     flex-flow: row;
@@ -75,10 +88,13 @@
 }
 .select-categoria{
     border: 1px solid #4B3621;
-    background-color: rgba(250, 215, 144, 0.8); /* Tono dorado suave */
+    background-color: rgba(250, 215, 144, 0.8);
+    /* background-color: rgba(250, 215, 144, 0.8); */
+     /* Tono dorado suave */
     color: #4B3621;
     border-radius: 5px;
     font-family: inherit;
+    box-shadow: 0 0 7px #C8A96A;
 }
 
 /* Añade esto para que el input combine con tu estilo vintage */

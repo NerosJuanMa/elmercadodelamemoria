@@ -1,13 +1,23 @@
 import React, { useState } from 'react'; 
 import './Card.css';
 
-const Card = ({ nombre, descripcion, precio, imagen, stock }) => {
+const Card = ({ nombre, descripcion, precio, imagen, stock, onAdd }) => {
     const [cantidad, setCantidad] = useState(1);
     console.log(`Producto: ${nombre} | Stock recibido: ${stock}`);
+    // const handleAgregar = () => {
+    //     alert(`Añadido al carrito: ${cantidad} unidad(es) de ${nombre}`);
+    // };
     const handleAgregar = () => {
-        alert(`Añadido al carrito: ${cantidad} unidad(es) de ${nombre}`);
-    };
-
+    onAdd({
+        nombre,
+        descripcion,
+        precio,
+        imagen,
+        stock,
+        cantidad // 👈 🔥 IMPORTANTE
+    });
+    alert(`Añadido al carrito: ${cantidad} unidad(es) de ${nombre}`);
+};
     // Función para manejar el cambio de cantidad manualmente (validación extra)
     const handleChange = (e) => {
         const valor = Number(e.target.value);
@@ -31,8 +41,7 @@ const Card = ({ nombre, descripcion, precio, imagen, stock }) => {
 
                 <div className="info_container">
                     <p className="descripcion">{descripcion}</p>
-                    {/* CORREGIDO: He eliminado la duplicación del texto de stock */}
-                    <div className="stock_info">
+                     <div className="stock_info">
                         Stock disponible: <strong>{stock}</strong>
                     </div>
                     <span className="precio">{precio} €</span>
@@ -47,12 +56,13 @@ const Card = ({ nombre, descripcion, precio, imagen, stock }) => {
                         onChange={handleChange} // USAMOS la función de validación
                         className="input_cantidad"
                     />
-                    <button 
+                                        
+                     <button 
                         onClick={handleAgregar}
                         className="btn_agregar"
                         disabled={stock <= 0}
                     >
-                        {stock > 0 ? 'Añadir' : 'Sin Stock'}
+                        {stock > 0 ? 'Añadir al carrito 🛒' : 'Sin Stock'}
                     </button>
                 </div>
             </div>

@@ -3,21 +3,25 @@ import React, { useState, useEffect } from 'react';
 import './Items.css';
 import Card from '../components/Card';
 import { getProductos } from "../api";
+import { useCarrito } from "../context/CarritoContext";
 
 export default function Productos() {
   const [productos, setProductos] = useState([]); // 👈 estado real
   const [searchTerm, setSearchTerm] = useState('');
   const [category, setCategory] = useState('Todas');
+  const { agregarAlCarrito } = useCarrito();
 
-  // 👇 AQUÍ VA useEffect (no dentro de arrays)
-  useEffect(() => {
-    getProductos()
-      .then(data => setProductos(data))
-      .catch(err => console.error(err));
-  }, []);
-
+    useEffect(() => {
+      getProductos()
+        .then(data => {
+          console.log("DATOS:", data);
+          setProductos(data.data); // 👈 🔥 ESTA ES LA CLAVE
+        })
+        .catch(err => console.error(err));
+    }, []);
   // 🔎 Filtro
-  const productosFiltrados = productos.filter(producto => {
+    const productosFiltrados = productos.filter(producto => {
+    // const productosFiltrados = (productos || []).filter(producto => {
     const coincideNombre = producto.nombre.toLowerCase().includes(searchTerm.toLowerCase());
     const coincideCategoria = category === 'Todas' || producto.categoria === category;
     
@@ -64,11 +68,14 @@ export default function Productos() {
             productosFiltrados.map(producto => (
               <Card 
                 key={producto.id}
+                // key={producto.id + Math.random()}
                 nombre={producto.nombre}
                 descripcion={producto.descripcion}
-                precio={producto.precio}
+                precio={producto.precio_unidad}
                 imagen={producto.imagen}
                 stock={producto.stock}
+                cantidad={producto.cantidad}
+                onAdd={() => agregarAlCarrito(producto)} // 👈 🔥
               />
             ))
           ) : (

@@ -15,13 +15,26 @@ export default function Pedido() {
   });
   // const { carrito } = useCarrito();
   const { carrito, limpiarCarrito } = useCarrito();
-
+  // Estos datos vendrían idealmente de tu estado global de carrito
+  // const productosEnPedido = [
+  //   { id: 5, nombre: "Reloj de Bolsillo Antiguo2", cantidad: 1 },
+  //   { id: 5, nombre: "Reloj de Bolsillo Antiguo2", cantidad: 1 },
+  //   { id: 5, nombre: "Reloj de Bolsillo Antiguo2", cantidad: 1 },
+  //   { id: 5, nombre: "Reloj de Bolsillo Antiguo2", cantidad: 1 },
+  //   { id: 5, nombre: "Reloj de Bolsillo Antiguo2", cantidad: 1 },
+    
+  //   { id: 2, nombre: "Cámara Vintage Kodak", cantidad: 1 }
+  // ];
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-
+  // const enviarPedido = (e) => {
+  //   e.preventDefault();
+  //   console.log("Enviando pedido...", formData, productosEnPedido);
+  //   // Aquí conectarías con tu backend: http://localhost:3000/api/pedidos
+  // };
   const enviarPedido = async () => {
   const pedido = {
     productos: carrito,
@@ -110,15 +123,13 @@ export default function Pedido() {
               carrito.map((p, index) => (
                 <div key={index}>
                   <h4>{p.nombre}</h4>
-                  <p>{p.precio_unidad} €</p>
-                  {/* <p>{carrito.cantidad} Uds.</p> */}
-
+                  <p>{p.precio} €</p>
                 </div>
               ))
             )}
 
             <div className="campo-grupo-total">
-            <label>Total €</label>
+            <label>Total</label>
             <input 
               type="num" 
               name="total" 
@@ -128,6 +139,11 @@ export default function Pedido() {
           </div> 
           </div>
 
+          
+          
+          {/* <button type="submit" className="btn-enviar">
+            Enviar
+          </button> */}
             <button className="btn-enviar" onClick={enviarPedido} >Finalizar pedido</button>
           <p className="nota-pie">
             El nombre de tu perfil de Canva no se compartirá. Nunca envíes contraseñas.

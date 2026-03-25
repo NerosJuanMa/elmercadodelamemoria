@@ -134,6 +134,13 @@
     grid-column:1 / -1;
     border: 2px solid #4B3621;
     border-radius: 10px;
+    width: 100%;
+    padding: 5px;
+    background-color: rgba(250, 215, 144, 0.8);
+    font-family: inherit;
+    color: #4B3621;
+    min-height: 50px;
+    
 }
 .seccion-productos label{
     display: flex;
@@ -175,6 +182,7 @@
     border-radius: 10px;
     background-color: rgba(250, 215, 144, 0.8);
     font-family: inherit;
+    font-size: 1.5rem;
     color: #4B3621;
 }
 

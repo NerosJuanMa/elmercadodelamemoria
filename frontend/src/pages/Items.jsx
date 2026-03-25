@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import './Items.css';
 import Card from '../components/Card';
-// import { getProductos } from "../api";
+import { getProductos } from "../api";
 
 export default function Productos() {
   const [productos, setProductos] = useState([]); // 👈 estado real

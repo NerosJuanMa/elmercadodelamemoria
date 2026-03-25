@@ -45,6 +45,7 @@ const Card = ({ nombre, descripcion, precio, imagen, stock, onAdd }) => {
                         Stock disponible: <strong>{stock}</strong>
                     </div>
                     <span className="precio">{precio} €</span>
+                    <span className="cantidad">{cantidad} Uds.</span>
                 </div>
 
                 <div className="compra_container">

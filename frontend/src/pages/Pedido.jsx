@@ -25,6 +25,7 @@ export default function Pedido() {
   const enviarPedido = async () => {
   const pedido = {
     productos: carrito,
+    cantidad: carrito,
     total: carrito.reduce((acc, p) => acc + Number(p.precio), 0)
   };
   const res = await crearPedido(pedido);
@@ -98,12 +99,7 @@ export default function Pedido() {
 
           <div className="seccion-productos">
             <label>Productos:</label>
-            {/* {productosEnPedido.map((item) => (
-              <div key={item.id} className="item-resumen">
-                {item.nombre}. Cantidad: {item.cantidad}
-              </div>
-            ))} 
-            -- */}
+            
             {carrito.length === 0 ? (
               <p>No hay productos en el carrito</p>
             ) : (
@@ -111,7 +107,8 @@ export default function Pedido() {
                 <div key={index}>
                   <h4>{p.nombre}</h4>
                   <p>{p.precio_unidad} €</p>
-                  {/* <p>{carrito.cantidad} Uds.</p> */}
+                  <p>{p.cantidad} Uds.</p>
+                  <p>{p.total} €</p>
 
                 </div>
               ))

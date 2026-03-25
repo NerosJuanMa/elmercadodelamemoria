@@ -14,6 +14,11 @@ export default function Pedido() {
   // Estos datos vendrían idealmente de tu estado global de carrito
   const productosEnPedido = [
     { id: 5, nombre: "Reloj de Bolsillo Antiguo2", cantidad: 1 },
+    { id: 5, nombre: "Reloj de Bolsillo Antiguo2", cantidad: 1 },
+    { id: 5, nombre: "Reloj de Bolsillo Antiguo2", cantidad: 1 },
+    { id: 5, nombre: "Reloj de Bolsillo Antiguo2", cantidad: 1 },
+    { id: 5, nombre: "Reloj de Bolsillo Antiguo2", cantidad: 1 },
+    
     { id: 2, nombre: "Cámara Vintage Kodak", cantidad: 1 }
   ];
 
@@ -35,7 +40,7 @@ export default function Pedido() {
     
       <section className="contenedor-pedido-fijo">
         <form className="form-vintage" onSubmit={enviarPedido}>
-          
+          <div className='form-grid'>
           <div className="campo-grupo">
             <label>Nombre</label>
             <input 
@@ -59,16 +64,6 @@ export default function Pedido() {
           </div>
 
           <div className="campo-grupo">
-            <label>Teléfono</label>
-            <input 
-              type="tel" 
-              name="telefono" 
-              value={formData.telefono} 
-              onChange={handleChange} 
-            />
-          </div>
-
-          <div className="campo-grupo">
             <label>Dirección</label>
             <textarea 
               name="dirección_entrega" 
@@ -78,26 +73,18 @@ export default function Pedido() {
             ></textarea>
           </div>
 
-          <div className="seccion-productos">
-            <label>Productos</label>
-            {productosEnPedido.map((item) => (
-              <div key={item.id} className="item-resumen">
-                {item.nombre}. Cantidad: {item.cantidad}
-              </div>
-            ))}
-          </div>
 
-           <div className="campo-grupo">
-            <label>Total</label>
+          <div className="campo-grupo">
+            <label>Teléfono</label>
             <input 
-              type="num" 
-              name="total" 
-              value={formData.total} 
+              type="tel" 
+              name="telefono" 
+              value={formData.telefono} 
               onChange={handleChange} 
             />
           </div>
 
-          <div className="campo-grupo">
+          <div className="campo-grupo-comentarios">
             <label>Comentarios</label>
             <textarea 
               name="comentarios" 
@@ -107,6 +94,26 @@ export default function Pedido() {
             ></textarea>
           </div>
 
+          <div className="seccion-productos">
+            <label>Productos:</label>
+            {productosEnPedido.map((item) => (
+              <div key={item.id} className="item-resumen">
+                {item.nombre}. Cantidad: {item.cantidad}
+              </div>
+            ))} 
+            <div className="campo-grupo-total">
+            <label>Total</label>
+            <input 
+              type="num" 
+              name="total" 
+              value={formData.total} 
+              onChange={handleChange} 
+            /></div>
+          </div> 
+          </div>
+
+          
+          
           <button type="submit" className="btn-enviar">
             Enviar
           </button>

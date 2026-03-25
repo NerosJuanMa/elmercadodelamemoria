@@ -77,11 +77,20 @@ async function insertarDatosIniciales() {
 
     // productos
     await pool.query(`
-      INSERT INTO productos (nombre, descripcion, precio_unidad, categoria, imagen_url) VALUES
-      ('Reloj antiguo', 'Reloj de pared vintage de los años 60', 120.00, 'Relojes', 'https://via.placeholder'),
-      ('Cámara clásica', 'Cámara analógica de colección', 95.50, 'Cámaras', 'https://via.placeholder'),
-      ('Libro antiguo', 'Libro histórico del siglo XIX', 45.00, 'Libros', 'https://via.placeholder')
-    `);
+  INSERT INTO productos (nombre, descripcion, precio_unidad, categoria, imagen_url, stock) VALUES
+('Reloj de Bolsillo Antiguo', 'Plata s.XIX, maquinaria a la vista.', 120.50, 'Relojes', 'https://loremflickr.com/1280/720', 25),
+('Cámara Vintage Kodak', 'Años 70, incluye funda de cuero original.', 85.00, 'Cámaras', 'https://placebear.com/1280/720', 3),
+('Libro de Cuero', 'Manuscrito medieval (réplica), papel pergamino.', 45.00, 'Libros', 'https://placebeard.it/1280x720', 5),
+('Mapa Estelar Antiguo', 'Grabado del s.XVII, marco de madera.', 95.00, 'Objetos de colección', 'https://via.assets.so/game.jpg?w=1280&h=720', 10),
+('Tintero de Bronce', 'Estilo victoriano con pluma de ave.', 30.00, 'Decoración', 'https://baconmockup.com/1280/720', 3),
+('Brújula de Latón', 'Navegación clásica, funcional.', 55.00, 'Objetos de colección', 'https://baconmockup.com/1280/720', 5),
+('Silla Luis XV', 'Madera tallada a mano, tapizado seda.', 250.00, 'Muebles', 'https://loremflickr.com/1280/720', 4),
+('Reloj de Pared Cucú', 'Madera de la Selva Negra, tallado a mano.', 185.00, 'Relojes', 'https://placebeard.it/1280x720', 15),
+('Cámara Leica M3', 'Clásica de 35mm, excelente estado óptico.', 450.00, 'Cámaras', 'https://via.assets.so/game.jpg?w=1280&h=720', 5),
+('Primera Edición Quijote', 'Edición facsímil con grabados antiguos.', 95.00, 'Libros', 'https://via.assets.so/game.jpg?w=1280&h=720', 2),
+('Moneda de Oro Escudo', 'Reproducción histórica de alta calidad.', 40.00, 'Objetos de colección', 'https://placebear.com/1280/720', 50),
+('Candelabro de Plata', 'Tres brazos, diseño barroco.', 75.00, 'Decoración', 'https://placebeard.it/1280x720', 6),
+('Escritorio Secreter', 'Madera de caoba con compartimentos ocultos.', 320.00, 'Muebles', 'https://picsum.photos/1280/720', 2);`);
     console.log('✅ Especialidades insertadas');
 
     // pedidos

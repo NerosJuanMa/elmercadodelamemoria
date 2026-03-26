@@ -5,7 +5,7 @@ PROYECTO 34-2026 TIENDA E-COMMERCE
 
 ---
 
-```markdown
+markdown
 # 🛒 El Mercado de la Memoria
 
 Aplicación web full-stack que simula un mercado digital donde los usuarios pueden explorar productos, añadirlos a un carrito y gestionar pedidos. Incluye además un panel de administración para la gestión de los productos.
@@ -62,7 +62,7 @@ El objetivo principal es simular una experiencia de compra sencilla e intuitiva,
 
 Tecnología principal: **React + Vite**
 
-```
+``````
 
 src/
 ├── assets/        # Imágenes y recursos estáticos
@@ -73,7 +73,7 @@ src/
 ├── App.jsx        # Componente principal
 └── main.jsx       # Punto de entrada
 
-
+``````
 
 ---
 

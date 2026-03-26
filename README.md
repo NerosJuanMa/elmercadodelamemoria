@@ -73,7 +73,7 @@ src/
 ├── App.jsx        # Componente principal
 └── main.jsx       # Punto de entrada
 
-````
+
 
 ---
 
@@ -148,9 +148,7 @@ screenshots/admin-pedidos.png
 ```bash
 git clone https://github.com/tu-usuario/tu-repo.git
 cd mercado-memoria
-````
-
----
+ 
 
 ### 2️⃣ Instalar dependencias
 

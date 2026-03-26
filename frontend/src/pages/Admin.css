@@ -1,7 +1,11 @@
-/* ─── Títutlo fijo ──────────────────────────────────────────────────────── */
+/* ════════════════════════════════════════════════════════════════════════════
+   ADMIN.CSS  —  Mobile-first, breakpoint principal: 640px
+════════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Título fijo ───────────────────────────────────────────────────────── */
 .title {
   display: flex;
-  flex-flow: column;
+  flex-direction: column;
   justify-self: center;
   align-items: center;
   text-align: center;
@@ -11,65 +15,108 @@
   border-radius: 10px;
   position: fixed;
   top: 1.5%;
-  width: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;          /* móvil: casi todo el ancho */
   backdrop-filter: blur(10px);
   z-index: 9999;
+  padding: 2px 8px;
+  box-sizing: border-box;
+}
+
+.title h2 {
+  font-size: 1rem;
+  margin: 4px 0;
+}
+
+@media (min-width: 640px) {
+  .title        { width: 50%; }
+  .title h2     { font-size: 1.25rem; }
+}
+
+@media (min-width: 1024px) {
+  .title { width: 35%; }
 }
 
 /* ─── Tabs ──────────────────────────────────────────────────────────────── */
 .admin-tabs {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 8px;
   position: fixed;
-  top: 9%;
+  top: 11%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 9998;
-  width: 40%;
+  width: 90%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 640px) {
+  .admin-tabs { top: 10%; width: 60%; gap: 12px; }
+}
+
+@media (min-width: 1024px) {
+  .admin-tabs { top: 10%; width: 40%; }
+}
+
+@media (max-width: 768px) {
+  .admin-tabs { top: 13%; width: 40%; }
 }
 
 .admin-tab {
   flex: 1;
-  padding: 8px 20px;
+  padding: 7px 10px;
   border: 1px solid #C8A96A;
   border-radius: 50px;
   background: rgba(255, 248, 230, 0.85);
   color: #4B3621;
   font-family: inherit;
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
   backdrop-filter: blur(8px);
   transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
 }
 
-.admin-tab:hover {
-  background: rgba(200, 169, 106, 0.35);
+@media (min-width: 640px) {
+  .admin-tab { font-size: 1rem; padding: 8px 20px; }
 }
 
-.admin-tab--activo {
-  background: #8b5e34;
-  color: rgba(250, 215, 144, 0.95);
-  border-color: #8b5e34;
-}
+.admin-tab:hover       { background: rgba(200, 169, 106, 0.35); }
+.admin-tab--activo     { background: #8b5e34; color: rgba(250, 215, 144, 0.95); border-color: #8b5e34; }
 
-/* ─── Contenedor principal (heredado de Pedido) ─────────────────────────── */
+/* ─── Contenedor principal ──────────────────────────────────────────────── */
 .contenedor-pedido-fijo {
   position: fixed;
-  top: 17%;
-  justify-self: center;
-  width: 90%;
-  height: 75vh;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  height: 72vh;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 15px;
+  padding: 12px;
   backdrop-filter: blur(10px);
   border: 1px solid #C8A96A;
   border-radius: 10px;
   box-sizing: border-box;
 }
 
+@media (min-width: 640px) {
+  .contenedor-pedido-fijo { top: 17%; width: 92%; height: 74vh; padding: 15px; }
+ 
+}
+
+@media (min-width: 1024px) {
+  .contenedor-pedido-fijo { top: 17%; width: 90%; height: 75vh; }
+ 
+  
+}
+@media (max-width: 768px) {
+ .contenedor-pedido-fijo { top: 17%; width: 90%; height: 75vh; }
+}
 /* ─── Panel ─────────────────────────────────────────────────────────────── */
 .admin-panel {
   display: flex;
@@ -77,105 +124,119 @@
   gap: 12px;
 }
 
+/* ─── Cabecera panel ────────────────────────────────────────────────────── */
 .admin-cabecera {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
 }
 
-.admin-subtitulo {
-  color: #4B3621;
-  text-decoration:underline;
+@media (min-width: 640px) {
+  .admin-cabecera {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}
+
+.admin-subtitulo { 
+  color: #4B3621; 
   margin: 0;
+  font-size: 1rem;
+  text-decoration:underline; 
   font-family: 'Playfair Display';
   padding: 5px 14px;
   border: 1px solid #C8A96A;
   border-radius: 50px;
   background: rgba(250, 215, 144, 0.4);  
-  font-size: 0.95rem;  
+  
 }
 
 /* ─── Filtros ───────────────────────────────────────────────────────────── */
 .admin-filtros {
   display: flex;
-  gap: 8px;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 .filtro-btn {
-  padding: 5px 14px;
+  padding: 5px 12px;
   border: 1px solid #C8A96A;
   border-radius: 50px;
   background: rgba(250, 215, 144, 0.4);
   color: #4B3621;
   font-family: inherit;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   cursor: pointer;
   transition: background 0.2s;
 }
 
-.filtro-btn:hover { background: rgba(200, 169, 106, 0.4); }
-.filtro-btn--activo {
-  background: #C8A96A;
-  color: #4B3621;
-  font-weight: 700;
-}
+.filtro-btn:hover     { background: rgba(200, 169, 106, 0.4); }
+.filtro-btn--activo   { background: #C8A96A; font-weight: 700; }
 
 /* ─── Botón nuevo ───────────────────────────────────────────────────────── */
 .btn-nuevo {
-  padding: 7px 18px;
+  padding: 7px 16px;
   background-color: #8b5e34;
   color: rgba(250, 215, 144, 0.95);
   border: none;
   border-radius: 50px;
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: background 0.25s;
+  white-space: nowrap;
 }
 .btn-nuevo:hover { background: #634226; }
 
-/* ─── Tabla ─────────────────────────────────────────────────────────────── */
+/* ─── Tabla — scroll horizontal en móvil ───────────────────────────────── */
 .tabla-scroll {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   border-radius: 10px;
   border: 1px solid #C8A96A;
 }
 
 .admin-tabla {
   width: 100%;
+  min-width: 520px;      /* fuerza scroll antes de romper el layout */
   border-collapse: collapse;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   color: #4B3621;
-  background:rgba(250, 215, 144, 0.8);
 }
 
-.admin-tabla thead tr {
-  background: #C8A96A;
+@media (min-width: 640px) {
+  .admin-tabla { font-size: 0.9rem; min-width: 600px; }
 }
+
+.admin-tabla thead tr { background: #C8A96A; }
 
 .admin-tabla th {
-  padding: 9px 12px;
+  padding: 8px 10px;
   text-align: left;
   font-weight: 700;
   color: #4B3621;
   white-space: nowrap;
 }
 
+@media (min-width: 640px) {
+  .admin-tabla th { padding: 9px 12px; }
+}
+
 .admin-tabla td {
-  padding: 8px 12px;
+  padding: 7px 10px;
   border-bottom: 1px solid rgba(200, 169, 106, 0.3);
   vertical-align: middle;
 }
 
-.admin-tabla tbody tr:hover {
-  background: rgba(250, 215, 144, 0.3);
+@media (min-width: 640px) {
+  .admin-tabla td { padding: 8px 12px; }
 }
 
-.fila-inactiva td {
-  opacity: 0.5;
-}
+.admin-tabla tbody tr:hover { background: rgba(250, 215, 144, 0.3); }
+.fila-inactiva td           { opacity: 0.5; }
 
 .tabla-vacia {
   text-align: center;
@@ -184,82 +245,99 @@
   font-style: italic;
 }
 
-/* ─── Badges estado producto ────────────────────────────────────────────── */
+/* ─── Columnas opcionales: ocultar en móvil ─────────────────────────────── */
+/* Descripción y fecha de creación no caben en móvil */
+.col-opcional {
+  display: none;
+}
+@media (min-width: 768px) {
+  .col-opcional { display: table-cell; }
+}
+
+/* ─── Badges ────────────────────────────────────────────────────────────── */
 .badge {
   display: inline-block;
-  padding: 2px 10px;
+  padding: 2px 8px;
   border-radius: 50px;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 700;
+  white-space: nowrap;
 }
-.badge--activo   { background: rgba(100, 180, 100, 0.2); color: #3a7a3a; border: 1px solid #3a7a3a; }
-.badge--inactivo { background: rgba(180, 80, 80, 0.15);  color: #8b1a1a; border: 1px solid #8b1a1a; }
+.badge--activo   { background: rgba(100,180,100,0.2); color: #3a7a3a; border: 1px solid #3a7a3a; }
+.badge--inactivo { background: rgba(180,80,80,0.15);  color: #8b1a1a; border: 1px solid #8b1a1a; }
 
-/* ─── Botones de acción en tabla ────────────────────────────────────────── */
-.tabla-acciones { display: flex; gap: 6px; }
+/* ─── Botones acción tabla ──────────────────────────────────────────────── */
+.tabla-acciones { display: flex; gap: 4px; }
 
 .btn-accion {
   border: none;
   border-radius: 8px;
-  padding: 4px 8px;
+  padding: 5px 8px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.95rem;
+  line-height: 1;
   transition: opacity 0.2s;
+  min-width: 32px;        /* toque más fácil en móvil */
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.btn-accion:hover  { opacity: 0.75; }
-.btn-editar        { background: rgba(200, 169, 106, 0.35); }
-.btn-desactivar    { background: rgba(180, 80,  80,  0.15); }
-.btn-reactivar     { background: rgba(100, 180, 100, 0.2);  }
+.btn-accion:hover    { opacity: 0.75; }
+.btn-editar          { background: rgba(200,169,106,0.35); }
+.btn-desactivar      { background: rgba(180,80,80,0.15);   }
+.btn-reactivar       { background: rgba(100,180,100,0.2);  }
 
 /* ─── Select estado pedido ──────────────────────────────────────────────── */
 .select-estado {
-  padding: 4px 8px;
+  padding: 5px 6px;
   border: 1px solid #a89a85;
   border-radius: 8px;
   background: rgba(250, 215, 144, 0.7);
   color: #4B3621;
   font-family: inherit;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   cursor: pointer;
+  max-width: 110px;
+}
+
+@media (min-width: 640px) {
+  .select-estado { font-size: 0.85rem; max-width: none; }
 }
 
 /* ─── Fila detalle pedido ───────────────────────────────────────────────── */
 .fila-detalle td {
   background: rgba(250, 240, 210, 0.6);
-  padding: 12px 16px !important;
+  padding: 10px 12px !important;
 }
 
 .detalle-pedido {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  font-size: 0.88rem;
+  gap: 5px;
+  font-size: 0.85rem;
 }
 
 .detalle-tabla {
   margin-top: 8px;
-  border: 1px solid rgba(200, 169, 106, 0.5);
+  border: 1px solid rgba(200,169,106,0.5);
   border-radius: 8px;
   overflow: hidden;
+  min-width: 280px;
 }
 
 .detalle-tabla th {
-  background: rgba(200, 169, 106, 0.4);
-  font-size: 0.82rem;
+  background: rgba(200,169,106,0.4);
+  font-size: 0.8rem;
 }
 
 /* ─── Mensajes ──────────────────────────────────────────────────────────── */
-.admin-msg {
-  text-align: center;
-  color: #8b7d6b;
-  font-style: italic;
-  padding: 10px;
-}
-.admin-msg--error { color: #8b1a1a; }
+.admin-msg       { text-align: center; color: #8b7d6b; font-style: italic; padding: 10px; }
+.admin-msg--error{ color: #8b1a1a; }
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   MODAL (login + crear/editar producto)
-═══════════════════════════════════════════════════════════════════════════ */
+/* ════════════════════════════════════════════════════════════════════════════
+   MODALES
+════════════════════════════════════════════════════════════════════════════ */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -269,24 +347,30 @@
   align-items: center;
   justify-content: center;
   z-index: 99999;
+  padding: 12px;          /* margen lateral en móvil */
+  box-sizing: border-box;
 }
 
 .modal-admin {
   background: rgba(255, 248, 230, 0.97);
   border: 1px solid #C8A96A;
   border-radius: 14px;
-  padding: 32px 28px 24px;
+  padding: 24px 18px 20px;
   width: 100%;
   max-width: 400px;
   box-shadow: 0 8px 32px rgba(75, 54, 33, 0.25);
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  max-height: 90vh;
+  gap: 14px;
+  max-height: 92vh;
   overflow-y: auto;
+  box-sizing: border-box;
 }
 
-/* Modal más ancho para el formulario de producto */
+@media (min-width: 640px) {
+  .modal-admin { padding: 32px 28px 24px; gap: 16px; }
+}
+ 
 .modal-prod { max-width: 560px; }
 
 .modal-titulo {
@@ -294,26 +378,34 @@
   color: #4B3621;
   text-align: center;
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
 }
 
-/* ─── Formulario modal ─────────────────────────────────────────────────── */
+@media (min-width: 640px) {
+  .modal-titulo { font-size: 1.25rem; }
+}
+
+/* ─── Form modal ────────────────────────────────────────────────────────── */
 .modal-form {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-/* Grid 2 columnas para formulario de producto */
+/* Grid de producto: 1 col en móvil, 2 en escritorio */
 .prod-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 12px;
+}
+
+@media (min-width: 500px) {
+  .prod-grid { grid-template-columns: 1fr 1fr; }
 }
 
 .campo-grupo--full { grid-column: 1 / -1; }
 
-/* ─── Reutilizamos .campo-grupo de Pedido.css ──────────────────────────── */
+/* ─── Campo grupo ───────────────────────────────────────────────────────── */
 .campo-grupo {
   display: flex;
   flex-direction: column;
@@ -329,14 +421,14 @@
   background-color: #C8A96A;
   border: 1px solid #4B3621;
   border-radius: 10px;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
 }
 
 .campo-grupo input,
 .campo-grupo textarea,
 .campo-grupo select {
   width: 100%;
-  padding: 6px 10px;
+  padding: 8px 10px;      /* más alto para toque cómodo */
   border: 1px solid #a89a85;
   border-radius: 10px;
   background-color: rgba(250, 215, 144, 0.8);
@@ -354,34 +446,39 @@
   box-shadow: 0 0 0 2px rgba(139, 94, 52, 0.2);
 }
 
-/* ─── Error modal ──────────────────────────────────────────────────────── */
+/* ─── Error ─────────────────────────────────────────────────────────────── */
 .modal-error {
   color: #8b1a1a;
-  background: rgba(139, 26, 26, 0.08);
-  border: 1px solid rgba(139, 26, 26, 0.25);
+  background: rgba(139,26,26,0.08);
+  border: 1px solid rgba(139,26,26,0.25);
   border-radius: 8px;
   padding: 7px 12px;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   text-align: center;
   margin: 0;
 }
 
-/* ─── Botones modal ────────────────────────────────────────────────────── */
+/* ─── Botones modal ─────────────────────────────────────────────────────── */
 .modal-botones {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   margin-top: 4px;
 }
 
 .modal-botones .btn-enviar,
 .modal-botones .btn-cancelar {
   flex: 1;
-  padding: 10px;
+  padding: 11px 10px;
   border-radius: 50px;
   border: none;
-  font-size: 1rem;
+  font-size: 0.95rem;
   cursor: pointer;
   transition: background 0.25s;
+}
+
+@media (min-width: 640px) {
+  .modal-botones .btn-enviar,
+  .modal-botones .btn-cancelar { font-size: 1rem; padding: 10px; }
 }
 
 .btn-enviar {

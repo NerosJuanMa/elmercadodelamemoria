@@ -26,7 +26,7 @@ const CATEGORIAS = [
 const ESTADOS_PEDIDO = ['pendiente','procesando','enviado','completado','cancelado'];
 
 // ══════════════════════════════════════════════════════════════════════════════
-export default function Admin() {
+export default function Admin() { 
   const navigate = useNavigate();
 
   // ── Auth ──
@@ -277,8 +277,7 @@ export default function Admin() {
                 <table className="admin-tabla">
                   <thead>
                     <tr>
-                      <th className="col-opcional">ID</th><th>Nombre</th>
-                      <th className="col-opcional">Categoría</th>
+                      <th>ID</th><th>Nombre</th><th>Categoría</th>
                       <th>Precio</th><th>Stock</th><th>Estado</th><th>Acciones</th>
                     </tr>
                   </thead>
@@ -288,9 +287,9 @@ export default function Admin() {
                     )}
                     {productosFiltrados.map(p => (
                       <tr key={p.id} className={p.activo ? '' : 'fila-inactiva'}>
-                        <td className="col-opcional">{p.id}</td>
+                        <td>{p.id}</td>
                         <td>{p.nombre}</td>
-                        <td className="col-opcional">{p.categoria}</td>
+                        <td>{p.categoria}</td>
                         <td>{Number(p.precio_unidad).toFixed(2)} €</td>
                         <td>{p.stock}</td>
                         <td>
@@ -321,7 +320,7 @@ export default function Admin() {
         {tab === 'pedidos' && (
           <div className="admin-panel">
             <div className="admin-cabecera">
-              <h3 className="admin-subtitulo">Lista de pedidos</h3>
+              <h3 className="admin-subtitulo">Lista de pedidos:</h3>
               <button className="btn-nuevo" onClick={cargarPedidos}>↻ Actualizar</button>
             </div>
 
@@ -333,10 +332,8 @@ export default function Admin() {
                 <table className="admin-tabla">
                   <thead>
                     <tr>
-                      <th className="col-opcional">ID</th><th>Cliente</th>
-                      <th className="col-opcional">Email</th>
-                      <th>Total</th><th>Estado</th>
-                      <th className="col-opcional">Fecha</th><th>Detalle</th>
+                      <th>ID</th><th>Cliente</th><th>Email</th>
+                      <th>Total</th><th>Estado</th><th>Fecha</th><th>Detalle</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -349,9 +346,9 @@ export default function Admin() {
                       return (
                       <React.Fragment key={p.id}>
                         <tr>
-                          <td className="col-opcional">{p.id}</td>
+                          <td>{p.id}</td>
                           <td>{p.nombre_cliente}</td>
-                          <td className="col-opcional">{p.email}</td>
+                          <td>{p.email}</td>
                           <td>{Number(p.total).toFixed(2)} €</td>
                           <td>
                             <div style={{display:'flex', gap:'6px', alignItems:'center'}}>
@@ -373,7 +370,7 @@ export default function Admin() {
                               </button>
                             </div>
                           </td>
-                          <td className="col-opcional">{p.creado_en ? new Date(p.creado_en).toLocaleDateString('es-ES') : '—'}</td>
+                          <td>{p.creado_en ? new Date(p.creado_en).toLocaleDateString('es-ES') : '—'}</td>
                           <td>
                             <button className="btn-accion btn-editar"
                               onClick={() => verDetalle(p.id)}>

@@ -45,7 +45,7 @@ export default function Productos() {
         </div>
 
         <div className='categoria'>
-          <h3>Categoría:</h3>
+          <h3 className='categoria-title'>Categoría:</h3>
           <select 
             value={category} 
             onChange={(e) => setCategory(e.target.value)}

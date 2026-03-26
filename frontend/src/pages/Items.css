@@ -158,3 +158,35 @@ h3{
   /* Asegura que el grid ocupe todo el ancho disponible internamente */
   width: 100%;
 }
+
+
+@media (max-width: 768px) {
+    .buscar{
+    left: 10%;
+    width: 30%;
+    height: 5%;
+    top: 10%;
+}
+.categoria{
+    display: flex;
+    flex-flow: column;
+    right: 10%;
+    width: 30%;
+    height: 5%;
+    justify-self: right;
+    align-items: last baseline;
+    top: 10%;  
+}
+.categoria-title{
+    position: relative;
+    bottom:20px;
+    left: 1px;
+}
+.select-categoria{
+    position: relative;
+    bottom:35px;
+    right: 2px;
+    width: 120px;
+    
+}
+}

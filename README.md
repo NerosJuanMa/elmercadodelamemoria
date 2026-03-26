@@ -117,27 +117,27 @@ src/
 
 ### 🏠 Página principal
 ![Home](./screenshots/home.png)
-./screenshots/home.png
+screenshots/home.png
 
 ### 🛍️ Listado de productos
 ![Items](./screenshots/items.png)
-./screenshots/items.png
+screenshots/items.png
 
 ### 🧾 Carrito / Pedido
 ![Pedido](./screenshots/pedido.png)
-./screenshots/pedido.png
+screenshots/pedido.png
 
 ### ⚙️ Panel de acceso a administración 
 ![Admin](./screenshots/login.png)
-./screenshots/login.png
+screenshots/login.png
 
 ### ⚙️ Panel de administración productos
 ![Admin](./screenshots/admin-productos.png)
-./screenshots/admin-productos.png
+screenshots/admin-productos.png
 
 ### ⚙️ Panel de administración pedidos
 ![Admin](./screenshots/admin-pedidos.png)
-./screenshots/admin-pedidos.png
+screenshots/admin-pedidos.png
 
 ---
 

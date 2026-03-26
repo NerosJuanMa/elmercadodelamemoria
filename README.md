@@ -146,7 +146,7 @@ src/
 ### 1️⃣ Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/tu-repo.git
+git clone https://github.com/NerosJuanMa/elmercadodelamemoria.git
 cd mercado-memoria
 ``` 
 

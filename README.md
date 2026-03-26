@@ -113,28 +113,31 @@ src/
 
 ---
 
-## 📸 Capturas de pantalla
-
-_(Añade aquí imágenes de la aplicación funcionando)_
+## 📸 Capturas de pantalla 
 
 ### 🏠 Página principal
 ![Home](./screenshots/home.png)
-
+./screenshots/home.png
 
 ### 🛍️ Listado de productos
 ![Items](./screenshots/items.png)
+./screenshots/items.png
 
 ### 🧾 Carrito / Pedido
 ![Pedido](./screenshots/pedido.png)
+./screenshots/pedido.png
 
 ### ⚙️ Panel de acceso a administración 
 ![Admin](./screenshots/login.png)
+./screenshots/login.png
 
 ### ⚙️ Panel de administración productos
 ![Admin](./screenshots/admin-productos.png)
+./screenshots/admin-productos.png
 
 ### ⚙️ Panel de administración pedidos
 ![Admin](./screenshots/admin-pedidos.png)
+./screenshots/admin-pedidos.png
 
 ---
 
@@ -256,7 +259,7 @@ Este proyecto permite consolidar conocimientos en:
 
 Proyecto desarrollado por:
 
-**[Tu Nombre]**
+**Juan Manuel Mudarra Pozo**
 
 ---
 
@@ -267,9 +270,5 @@ Este proyecto es de uso educativo.
 ```
 
 ---
-
-Si quieres, puedo mejorarte esto aún más con:
-- versión **más profesional para portfolio**
-- o adaptarlo para **presentación oral / defensa (muy útil si lo tienes que explicar)**
-```
+ 
 

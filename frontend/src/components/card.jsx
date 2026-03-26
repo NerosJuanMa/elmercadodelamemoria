@@ -1,20 +1,18 @@
 import React, { useState } from 'react'; 
 import './Card.css';
 
-const Card = ({ nombre, descripcion, precio, imagen, stock, onAdd }) => {
+const Card = ({ id, nombre, descripcion, precio, imagen, stock, onAdd }) => {
     const [cantidad, setCantidad] = useState(1);
-    console.log(`Producto: ${nombre} | Stock recibido: ${stock}`);
-    // const handleAgregar = () => {
-    //     alert(`Añadido al carrito: ${cantidad} unidad(es) de ${nombre}`);
-    // };
+
     const handleAgregar = () => {
     onAdd({
+        producto_id: id,         // 👈 backend necesita producto_id
         nombre,
         descripcion,
-        precio,
+        precio_unitario: precio, // 👈 backend espera precio_unitario
         imagen,
         stock,
-        cantidad // 👈 🔥 IMPORTANTE
+        cantidad
     });
     alert(`Añadido al carrito: ${cantidad} unidad(es) de ${nombre}`);
 };
@@ -44,8 +42,7 @@ const Card = ({ nombre, descripcion, precio, imagen, stock, onAdd }) => {
                      <div className="stock_info">
                         Stock disponible: <strong>{stock}</strong>
                     </div>
-                    <span className="precio">{precio} €</span>
-                    <span className="cantidad">{cantidad} Uds.</span>
+                    <span className="precio">{precio} €</span> 
                 </div>
 
                 <div className="compra_container">

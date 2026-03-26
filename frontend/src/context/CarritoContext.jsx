@@ -8,7 +8,18 @@ export const CarritoProvider = ({ children }) => {
   const [carrito, setCarrito] = useState([]);
 
   const agregarAlCarrito = (producto) => {
-    setCarrito(prev => [...prev, producto]);
+    setCarrito(prev => {
+      const existente = prev.find(p => p.producto_id === producto.producto_id);
+      if (existente) {
+        // Si ya existe, sumamos la cantidad (sin superar el stock)
+        return prev.map(p =>
+          p.producto_id === producto.producto_id
+            ? { ...p, cantidad: Math.min(p.cantidad + producto.cantidad, p.stock) }
+            : p
+        );
+      }
+      return [...prev, producto];
+    });
   };
 
   const eliminarDelCarrito = (id) => {

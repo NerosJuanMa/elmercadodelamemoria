@@ -1,0 +1,160 @@
+.title{
+    display: flex;
+    flex-flow: column;
+    justify-self: center;
+    align-items: center; 
+    text-align: center;
+    gap: 1px; 
+    color: #4B3621; 
+    filter: brightness(1) 
+        saturate(0%) 
+        invert(0%) 
+        sepia(10%) 
+        saturate(1000%) 
+        hue-rotate(0deg) 
+        brightness(100%) 
+        contrast(150%); 
+    border: 1px solid #C8A96A;
+    border-radius: 10px;
+    position: fixed;
+    top: 1.5%;
+    width: 35%;
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+}
+.filtro_categoria{
+    /* display: flex; */
+    /* flex-flow: column; */
+    /* justify-self: center; */
+    /* align-items: center;  */
+    /* gap: 1px;  */
+    /* color: #4B3621;  */
+    /* border: 1px solid #C8A96A; */
+    /* border-radius: 10px; */
+    /* position: fixed; */
+    /* top: 10%; */
+    /* width: 90%; */
+    /* border: 5px solid red; */
+    /* backdrop-filter: blur(10px); */
+    z-index: 10000;
+}
+h3{
+  color: #F5F0E6; 
+  background-color: #C8A96A;
+  transition: color 0.3s ease;
+  background: transparent;
+  filter: brightness(1) 
+        saturate(100%) 
+        invert(100%) 
+        sepia(90%) 
+        saturate(1000%) 
+        hue-rotate(0deg) 
+        brightness(90%) 
+        contrast(50%);
+}
+.buscar{
+    display: flex;
+    flex-flow: row;
+    left: 10%;
+    width: 30%;
+    height: 8%;
+    justify-self: center;
+    align-items:center; 
+    gap: 1px; 
+    color: #4B3621; 
+    border: 1px solid #C8A96A;
+    border-radius: 10px;
+    position: fixed;
+    top: 8%;
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+}
+.categoria{
+    display: flex;
+    flex-flow: row;
+    right: 10%;
+    width: 30%;
+    height: 8%;
+    justify-self: center;
+    align-items: center; 
+    gap: 1px; 
+    color: #4B3621; 
+    border: 1px solid #C8A96A;
+    border-radius: 10px;
+    position: fixed;
+    top: 8%;  
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+}
+.select-categoria{
+    border: 1px solid #4B3621;
+    background-color: rgba(250, 215, 144, 0.8);
+    /* background-color: rgba(250, 215, 144, 0.8); */
+     /* Tono dorado suave */
+    color: #4B3621;
+    border-radius: 5px;
+    font-family: inherit;
+    box-shadow: 0 0 7px #C8A96A;
+}
+
+/* Añade esto para que el input combine con tu estilo vintage */
+.input-busqueda {
+    width: 100%;
+    /* padding: 5px;
+    margin: 10px 0; */
+    border: 1px solid #4B3621;
+    background-color: rgba(250, 215, 144, 0.8); /* Tono dorado suave */
+    color: #4B3621;
+    border-radius: 5px;
+    font-family: inherit;
+}
+
+.input-busqueda:focus {
+    outline: none;
+    border-color: #C8A96A;
+    box-shadow: 0 0 5px #C8A96A;
+}
+/* 1. EL CONTENEDOR FIJO (donde ocurre el scroll) */
+.contenedor-productos-fijo {
+  /* Posicionamiento: Ajusta esto según dónde quieras el bloque en tu web */
+  position: fixed; /*relative;  O 'absolute'/'fixed' si quieres que flote sobre otros elementos */
+  top: 17%; 
+  justify-self: center;
+  
+  /* TAMAÑO DEL BLOQUE VISIBLE (importante) */
+  width: 80%; /* O el ancho que desees, ej: 80% */
+  height: 70vh; /* El bloque medirá el 80% del alto de la pantalla */
+  
+  /* COMPORTAMIENTO DEL SCROLL (La magia) */
+  overflow-y: auto; /* Muestra barra de scroll vertical solo si es necesario */
+  overflow-x: hidden; /* Evita scroll horizontal */
+  
+  /* Estilos visuales opcionales */
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  /* background-color:rgba(255, 255, 255, 0.5);  */
+  border: 1px solid #C8A96A;;
+  border-radius: 10px;
+  box-sizing: border-box; /* Asegura que el padding no sume al tamaño */
+}
+
+/* Opcional: Estilizar la barra de scroll para que sea más discreta */
+.contenedor-productos-fijo::-webkit-scrollbar {
+  width: 8px;
+}
+.contenedor-productos-fijo::-webkit-scrollbar-thumb {
+  background-color: #C8A96A;
+  border-radius: 4px;
+}
+
+/* 2. EL GRID DE PRODUCTOS (dentro del contenedor) */
+.grid-productos {
+  display: grid;
+  /* Define cuántas columnas quieres y su comportamiento */
+  /* 'repeat(auto-fill, minmax(280px, 1fr))' hace que sea responsivo automáticamente */
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 20px; /* Espacio entre tarjetas */
+  
+  /* Asegura que el grid ocupe todo el ancho disponible internamente */
+  width: 100%;
+}

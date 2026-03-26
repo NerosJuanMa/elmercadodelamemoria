@@ -1,0 +1,21 @@
+.hero { 
+  overflow: hidden;
+}
+
+.fondo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+   /* Usamos vh (viewport height) para asegurar el alto total de la pantalla */
+  height: 100vh;
+  /* Esta propiedad es clave para que la imagen no se deforme */
+  /* object-fit: cover;  */
+  z-index: -1;
+}
+@media (max-width: 768px) {
+  .fondo {
+  position: absolute;
+
+}
+}

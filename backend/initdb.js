@@ -41,7 +41,7 @@ async function crearBBDD() {
           direccion_entrega TEXT NOT NULL,
           total DECIMAL(10,2) NOT NULL,
           comentarios TEXT,
-          estado ENUM('Pendiente', 'Pagado', 'Enviado', 'Entregado') DEFAULT 'Pendiente',
+          estado ENUM('pendiente','procesando','enviado','completado','cancelado') DEFAULT 'Pendiente',
           creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )
     `);
@@ -96,7 +96,7 @@ async function insertarDatosIniciales() {
     // pedidos
     await pool.query(`
       INSERT INTO pedidos (nombre_cliente, email, telefono, direccion_entrega, total, comentarios, estado)
-      VALUES ('Juan Pérez','juan@email.com','600123123','Sevilla', 120.00,'Entrega lo antes posible', 'Pendiente') 
+      VALUES ('Juan Pérez','juan@email.com','600123123','Sevilla', 120.00,'Entrega lo antes posible', 'pendiente') 
     `);
     console.log('✅ pedidos insertados');
     // pedidos_items

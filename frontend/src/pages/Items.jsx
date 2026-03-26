@@ -68,14 +68,14 @@ export default function Productos() {
             productosFiltrados.map(producto => (
               <Card 
                 key={producto.id}
-                // key={producto.id + Math.random()}
+                id={producto.id}
                 nombre={producto.nombre}
                 descripcion={producto.descripcion}
                 precio={producto.precio_unidad}
-                imagen={producto.imagen}
+                imagen={producto.imagen_url}
                 stock={producto.stock}
                 cantidad={producto.cantidad}
-                onAdd={() => agregarAlCarrito(producto)} // 👈 🔥
+                onAdd={(item) => agregarAlCarrito(item)}// 👈 🔥
               />
             ))
           ) : (

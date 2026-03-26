@@ -3,7 +3,7 @@ import './Layout.css';
 import Header from "./Header";
 // import Nav from "./Nav";
 import Footer from "./Footer";
-import mercado from '../assets/Mercado.png'
+import mercado from '../assets/Mercado.jpg'
 
 export default function Layout() {
   return (
